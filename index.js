@@ -1,14 +1,11 @@
-fetch("https://api.adviceslip.com/advice")
-  .then((response) => {
-    return console.log(response.json());
-  })
-  .then((data) => {
-    console.log(data);
-  });
+const adviceId = document.getElementById("id");
+const advice = document.getElementById("advice");
 
 const getData = async () => {
   const response = await fetch("https://api.adviceslip.com/advice");
-  console.log(response.json());
+  const data = await response.json();
+  adviceId.innerHTML = "ADVICE " + data.slip.id;
+  advice.innerHTML = data.slip.advice;
 };
 
 getData();
